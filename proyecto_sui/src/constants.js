@@ -1,4 +1,4 @@
-export const PACKAGE_ID = "0xabc0e8d9b05b46ea8b50f7183de8a235a8acffaf1254e428446a0fa659ef7c68"
+export const PACKAGE_ID = "0x9b747fdc1fcc74337e11f4e5c468e75b757e307e8446ee99391ca6e2f47430ce"
 
 export const APP_CONFIG = {
   NAME: "MotoStore Pro",
