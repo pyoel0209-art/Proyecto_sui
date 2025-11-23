@@ -6,8 +6,8 @@ import { ConnectButton, useCurrentAccount } from "@mysten/dapp-kit";
 import { useState } from 'react';
 
 import './App.css'
-import StoreForm from "./StoreForm";
-import { PhoneStoreDashboard } from "./PhoneStoreDashboard";
+import DealershipForm from "./DealershipForm";
+import { MotoStoreDashboard } from "./MotoStoreDashboard";
 
 function App() {
   const suiClient = useSuiClient()
@@ -15,7 +15,7 @@ function App() {
   const { mutate: signAndExecute } = useSignAndExecuteTransaction()
   const [estado, cambiarEstado] = useState(false);
   const [respuesta, cambiarRespuesta] = useState(null);
-  const [tiendaCreada, setTiendaCreada] = useState(false)
+  const [concesionariaCreada, setConcesionariaCreada] = useState(false)
   const [objectId, setObjectId] = useState(() => {
     const hash = window.location.hash.slice(1);
     return isValidSuiObjectId(hash) ? hash : null;
@@ -78,7 +78,7 @@ function App() {
 
         const decoded = decodeReturnValues(result);
         if (params.funcion === "retornar_todo"){
-          cambiarRespuesta(`📱 Cliente: ${decoded[4]}\n📅 Año de registro: ${decoded[0]}\n⭐ Nivel del cliente: ${decoded[3]['raw'][1]}% de descuento\n🏠 Dirección: ${decoded[1]}`)
+          cambiarRespuesta(`🏍️ Cliente: ${decoded[4]}\n📅 Año de registro: ${decoded[0]}\n⭐ Nivel del cliente: ${decoded[3]['raw'][1]}% de descuento\n🏠 Dirección: ${decoded[1]}`)
         }
         return decoded;
       }
@@ -100,7 +100,7 @@ function App() {
               if (id) {
                 setObjectId(id);
                 window.location.hash = id;
-                setTiendaCreada(true);
+                setConcesionariaCreada(true);
               }
             }
           },
@@ -117,7 +117,6 @@ function App() {
     }
   }
 
-  // Funciones de decodificación (mantener igual)
   function decodeReturnValues(result) {
     try {
       const values = result.results?.[0]?.returnValues || result.effects?.returnValues;
@@ -192,12 +191,12 @@ function App() {
   
   return (
     <div className="app-container">
-      <header className="phonestore-header">
+      <header className="motostore-header">
         <div className="brand">
-          <div className="brand-logo">📱</div>
+          <div className="brand-logo">🏍️</div>
           <div className="brand-text">
-            <h1>PhoneStore Pro</h1>
-            <div className="subtitle">Sistema de Gestión de Tienda</div>
+            <h1>MotoStore Pro</h1>
+            <div className="subtitle">Concesionaria de Motos</div>
           </div>
         </div>
         <ConnectButton />
@@ -206,17 +205,17 @@ function App() {
       <main className="main-content">
         {!cuenta ? (
           <div className="hero-section">
-            <h1 className="hero-title">PhoneStore Pro</h1>
+            <h1 className="hero-title">MotoStore Pro</h1>
             <p className="hero-subtitle">
-              Sistema completo de gestión para tu tienda de celulares. 
-              Controla inventario, clientes y ventas de forma eficiente.
+              Sistema completo de gestión para tu concesionaria de motos. 
+              Controla inventario, clientes y ventas de forma profesional.
             </p>
             <div style={{marginTop: '2rem'}}>
               <ConnectButton />
             </div>
           </div>
-        ) : tiendaCreada ? (
-          <PhoneStoreDashboard 
+        ) : concesionariaCreada ? (
+          <MotoStoreDashboard 
             ClientCall={ClientCall}
             estado={estado}
             objectId={objectId}
@@ -224,10 +223,10 @@ function App() {
             respuesta={respuesta}
           />
         ) : (
-          <StoreForm 
+          <DealershipForm 
             ClientCall={ClientCall}
             estado={estado}
-            setTiendaCreada={setTiendaCreada}
+            setConcesionariaCreada={setConcesionariaCreada}
           />
         )}
       </main>

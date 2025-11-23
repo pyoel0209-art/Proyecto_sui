@@ -1,7 +1,7 @@
 export const FUNCTIONS = [
     {
-        titulo: "Ver Nombre de la Tienda",
-        descripcion: "Consultar el nombre registrado de la tienda de celulares",
+        titulo: "Ver Nombre de la Concesionaria",
+        descripcion: "Consultar el nombre registrado de la concesionaria de motos",
         nombreFuncion: "ver_nombre",
         soloLectura: "1",
         inputs: []
@@ -9,7 +9,7 @@ export const FUNCTIONS = [
 
     {
         titulo: "Registrar Nuevo Cliente",
-        descripcion: "Agregar un nuevo cliente al sistema con nivel inicial Básico.",
+        descripcion: "Agregar un nuevo cliente al sistema con nivel inicial Estándar.",
         nombreFuncion: "agregar_cliente",
         soloLectura: "0",
         inputs: [
@@ -20,18 +20,18 @@ export const FUNCTIONS = [
         ]
     },
     {
-        titulo: "Agregar Dispositivo",
-        descripcion: "Registrar un nuevo dispositivo al inventario del cliente.",
+        titulo: "Agregar Motocicleta",
+        descripcion: "Registrar una nueva motocicleta al inventario del cliente.",
         nombreFuncion: "agregar_servicio",
         soloLectura: "0",
         inputs: [
             { name: "id_cliente", type: "u16", label: "ID del Cliente" },
-            { name: "servicio", type: "string", label: "Modelo del Dispositivo" }
+            { name: "servicio", type: "string", label: "Modelo de la Motocicleta" }
         ]
     },
     {
-        titulo: "Ascender a Cliente Premium",
-        descripcion: "Promover cliente a nivel Premium (descuentos especiales).",
+        titulo: "Ascender a Cliente VIP",
+        descripcion: "Promover cliente a nivel VIP (beneficios exclusivos).",
         nombreFuncion: "cambiar_nivel_a_oro",
         soloLectura: "0",
         inputs: [
@@ -39,7 +39,7 @@ export const FUNCTIONS = [
         ]
     },
     {
-        titulo: "Consultar Descuentos",
+        titulo: "Consultar Descuentos VIP",
         descripcion: "Ver descuentos disponibles según el nivel del cliente",
         nombreFuncion: "aplicar_descuento",
         soloLectura: "1",
@@ -49,7 +49,7 @@ export const FUNCTIONS = [
     },
     {
         titulo: "Perfil del Cliente",
-        descripcion: "Ver perfil completo y historial del cliente",
+        descripcion: "Ver perfil completo e historial de compras del cliente",
         nombreFuncion: "ver_estado_cliente",
         soloLectura: "1",
         inputs: [
@@ -58,7 +58,7 @@ export const FUNCTIONS = [
     },
     {
         titulo: "Expediente Completo",
-        descripcion: "Consultar toda la información del cliente",
+        descripcion: "Consultar toda la información del cliente y sus motos",
         nombreFuncion: "retornar_todo",
         soloLectura: "1",
         inputs: [

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FUNCTIONS } from './functionsConfig';
 
-export function PhoneStoreDashboard({ ClientCall, estado, objectId, setObjectId, respuesta }) {
+export function MotoStoreDashboard({ ClientCall, estado, objectId, setObjectId, respuesta }) {
 
     return (
         <div>
@@ -9,15 +9,15 @@ export function PhoneStoreDashboard({ ClientCall, estado, objectId, setObjectId,
             <div className="hero-section">
                 <h1 className="hero-title">Panel de Gestión</h1>
                 <p className="hero-subtitle">
-                    Gestiona clientes, dispositivos y consulta el historial completo de tu tienda de celulares.
+                    Gestiona clientes, motocicletas y consulta el historial completo de tu concesionaria.
                 </p>
                 
                 <div style={{maxWidth: '600px', margin: '0 auto'}}>
                     <div className="form-group">
-                        <label className="form-label">ID de la Tienda</label>
+                        <label className="form-label">ID de la Concesionaria</label>
                         <input 
                             type="text" 
-                            placeholder="Pega aquí el ID de la Tienda (0x...)"
+                            placeholder="Pega aquí el ID de la Concesionaria (0x...)"
                             className="form-input"
                             value={objectId}
                             onChange={(e) => setObjectId(e.target.value)}
@@ -48,7 +48,7 @@ export function PhoneStoreDashboard({ ClientCall, estado, objectId, setObjectId,
             {/* Grid de Funciones */}
             <div className="functions-grid">
                 {FUNCTIONS.map((config, index) => (
-                    <StoreFunctionCard 
+                    <MotoFunctionCard 
                         key={index}
                         config={config}
                         ClientCall={ClientCall}
@@ -61,13 +61,13 @@ export function PhoneStoreDashboard({ ClientCall, estado, objectId, setObjectId,
     );
 }
 
-function StoreFunctionCard({ config, ClientCall, estado, objectId }) {
+function MotoFunctionCard({ config, ClientCall, estado, objectId }) {
     const [valores, setValores] = useState({});
 
     function enviar(e) {
         e.preventDefault();
         if (!objectId) {
-            alert("Primero debes ingresar el ID de la tienda");
+            alert("Primero debes ingresar el ID de la concesionaria");
             return;
         }
 
@@ -90,12 +90,12 @@ function StoreFunctionCard({ config, ClientCall, estado, objectId }) {
         setValores(prev => ({ ...prev, [name]: value }));
     };
 
-    // Iconos para funciones de tienda
+    // Iconos para funciones de concesionaria
     const getIcon = (funcName) => {
         const icons = {
-            'ver_nombre': '🏪',
+            'ver_nombre': '🏢',
             'agregar_cliente': '👤', 
-            'agregar_servicio': '📱',
+            'agregar_servicio': '🏍️',
             'cambiar_nivel_a_oro': '⭐',
             'aplicar_descuento': '💰',
             'ver_estado_cliente': '📊',
