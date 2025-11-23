@@ -1,4 +1,3 @@
-/* Reset y variables tienda celulares */
 export const FUNCTIONS = [
     {
         titulo: "Ver Nombre de la Tienda",
