@@ -78,7 +78,7 @@ function App() {
 
         const decoded = decodeReturnValues(result);
         if (params.funcion === "retornar_todo"){
-          cambiarRespuesta(`🏍️ Cliente: ${decoded[4]}\n📅 Año de registro: ${decoded[0]}\n⭐ Nivel del cliente: ${decoded[3]['raw'][1]}% de descuento\n🏠 Dirección: ${decoded[1]}`)
+          cambiarRespuesta(`🏍️ Cliente: ${decoded[4]}\n📅 Año de Registro: ${decoded[0]}\n⭐ Nivel del cliente: ${decoded[3]['raw'][1]}% de descuento\n🏠 Dirección: ${decoded[1]}`)
         }
         return decoded;
       }
